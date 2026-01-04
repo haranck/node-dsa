@@ -296,54 +296,56 @@
 
 // reverse a queue
 
-// class Queue{
-//     constructor(){
-//         this.queue = []
-//     }
-//     enqueue(value){
-//         this.queue.push(value)
-//     }
-//     dequeue(){
-//         return this.queue.shift()
-//     }
-//     peek(){
-//         return this.queue[0]
-//     }
-//     isEmpty(){
-//         return this.queue.length === 0
-//     }
-//     print(){
-//         console.log("Queue : ",this.queue)
-//     }
-// }
+class Queue{
+    constructor(){
+        this.queue = []
+    }
+    enqueue(value){
+        this.queue.push(value)
+    }
+    dequeue(){
+        return this.queue.shift()
+    }
+    peek(){
+        return this.queue[0]
+    }
+    isEmpty(){
+        return this.queue.length === 0
+    }
+    print(){
+        console.log("Queue : ",this.queue)
+    }
+}
 
-// function reverseQueue(queue){
-//     // let stack = []
-//     // while(!queue.isEmpty()){
-//     //     stack.push(queue.dequeue())
-//     // }
-//     // while(stack.length){
-//     //     queue.enqueue(stack.pop())
-//     // }
-//     //// using recursion
-//     if(queue.isEmpty())return
-//     let front  = queue.dequeue()
-//     reverseQueue(queue)
-//     queue.enqueue(front)
-// }
+function reverseQueue(queue){
+    // let stack = []
+    // while(!queue.isEmpty()){
+    //     stack.push(queue.dequeue())
+    // }
+    // while(stack.length){
+    //     queue.enqueue(stack.pop())
+    // }
 
-// const q  = new Queue()
+    //// using recursion
+    
+    if(queue.isEmpty())return
+    let front  = queue.dequeue()
+    reverseQueue(queue)
+    queue.enqueue(front)
+}
 
-// q.enqueue(1)
-// q.enqueue(2)
-// q.enqueue(3)
-// q.enqueue(4)
-// q.enqueue(5)
-// q.print()
+const q  = new Queue()
 
-// reverseQueue(q)
-// console.log('after reversing : ')
-// q.print()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+q.enqueue(4)
+q.enqueue(5)
+q.print()
+
+reverseQueue(q)
+console.log('after reversing : ')
+q.print()
 
 ////////////////////////////////////////////////////////////////////////////
 
