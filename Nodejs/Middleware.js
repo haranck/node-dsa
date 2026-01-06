@@ -253,39 +253,53 @@
 //     res.send('its Home')
 // })
 
-// app.all('/*',(req,res)=>{
+// app.all('/*splat',(req,res)=>{
 //     res.status(404).send('404 - Page not found')
 // })
-// // app.use((req,res)=>[
-// //     res.status(404).send('404 - Page not found')
-// // ])
+
 
 // app.listen(3000,()=> console.log('server running at the port 3000'))
 
 
+// const express =  require('express')
+// const router = express.Router()
 
 
+// const app = express()
+
+// app.get('/',(req,res)=>{
+//     res.send('landing page .. ')
+// })
+
+// app.get('/home',(req,res)=>{
+//     throw new Error('something went wrong')
+// })
+
+// app.use((err,req,res,next)=>{
+//     console.log('Error :' ,err.message)
+//     res.send(`Home page loading failed ${err.message}`)
+// })
+
+// app.listen(3000,()=> console.log('server running at the port 3000'))
 
 
-const express = require('express');
-const app = express();
-const PORT = 3000;
+const express = require('express')
+const app = express()
+const fs = require('fs')
 
-// 1. Define specific routes first
-app.get('/', (req, res) => {
-  res.send('Welcome home!');
-});
+app.get('/home/:name',(req,res)=>{
 
-app.get('/about', (req, res) => {
-  res.send('About page');
-});
+    const name = req.params.name
 
-// 2. Place the wildcard route last to catch all unmatched requests
-app.all('/*splat', (req, res) => {
-  res.status(404).send('Error 404: Page not found!');
-});
+    fs.writeFile('input.txt',name,(err)=>{
+        if(err){
+            console.log(error)
+            return
+        }
+        console.log('file created')
+    })
+    res.send('helloo')
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+})
 
+app.listen(3000,()=>console.log('server running'))
